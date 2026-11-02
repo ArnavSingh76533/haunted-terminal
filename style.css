@@ -1,0 +1,47 @@
+:root {
+  --green: #39ff6a;
+  --green-dim: #1c9e3f;
+  --amber: #ffb000;
+  --red: #ff3b3b;
+  --bg: #020a04;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; height: 100%; background: #000; }
+body {
+  font-family: "Courier New", ui-monospace, Menlo, Consolas, monospace;
+  color: var(--green);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  padding: 16px;
+}
+.crt {
+  position: relative; width: min(960px, 100%); height: min(86vh, 720px);
+  background: radial-gradient(ellipse at center, #062b10 0%, var(--bg) 75%);
+  border-radius: 24px; padding: 24px 28px 64px;
+  box-shadow: 0 0 0 14px #1a1a17, 0 0 0 16px #000, 0 0 60px rgba(57,255,106,.15) inset, 0 20px 80px rgba(0,0,0,.8);
+  overflow: hidden; text-shadow: 0 0 4px rgba(57,255,106,.7);
+  animation: flicker 6s infinite;
+}
+.screen { height: 100%; overflow-y: auto; white-space: pre-wrap; word-break: break-word; font-size: 16px; line-height: 1.35; scrollbar-width: none; }
+.screen::-webkit-scrollbar { display: none; }
+.input-line { position: absolute; left: 28px; right: 28px; bottom: 22px; display: flex; gap: 8px; align-items: center; }
+.prompt { white-space: nowrap; }
+.cmd { flex: 1; background: transparent; border: 0; outline: 0; color: var(--green); font: inherit; font-size: 16px; caret-color: var(--green); text-shadow: inherit; }
+.scanlines { pointer-events: none; position: absolute; inset: 0; background: repeating-linear-gradient(to bottom, rgba(0,0,0,.25) 0 1px, transparent 1px 3px); }
+.vignette { pointer-events: none; position: absolute; inset: 0; box-shadow: inset 0 0 120px rgba(0,0,0,.9); border-radius: 24px; }
+.ghost { color: #c9fff0; text-shadow: 0 0 8px #9fffe0, 0 0 2px #fff; }
+.sys { color: var(--green-dim); }
+.amber { color: var(--amber); text-shadow: 0 0 6px rgba(255,176,0,.6); }
+.red { color: var(--red); text-shadow: 0 0 8px rgba(255,59,59,.8); }
+.user { color: #b8ffcc; }
+.glitch { animation: glitch .35s steps(2) 3; }
+.crt.possessed { animation: shake .4s 3, flicker .2s 8; filter: hue-rotate(250deg) saturate(2); }
+.hud { margin-top: 18px; display: flex; gap: 16px; align-items: center; font-size: 12px; color: var(--green-dim); }
+.hud-btn { background: none; border: 1px solid var(--green-dim); color: var(--green); font: inherit; padding: 4px 10px; cursor: pointer; }
+@keyframes flicker { 0%,100% { opacity: 1 } 47% { opacity: .96 } 48% { opacity: .85 } 49% { opacity: .98 } }
+@keyframes glitch { 0% { transform: translate(2px,-1px); filter: blur(.5px) } 100% { transform: translate(-2px,1px) } }
+@keyframes shake { 0%,100% { transform: translate(0) } 25% { transform: translate(-6px,3px) } 75% { transform: translate(5px,-4px) } }
+@media (max-width: 600px) {
+  .crt { border-radius: 10px; padding: 14px 14px 56px; height: 80vh; }
+  .screen, .cmd { font-size: 13px; }
+  .input-line { left: 14px; right: 14px; }
+}

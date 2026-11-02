@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Haunted Terminal — a 1987 BBS, resurrected</title>
+  <meta name="description" content="A dead 1980s dial-up bulletin board system, brought back to life — and something came back with it." />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="crt" class="crt">
+    <div id="screen" class="screen" aria-live="polite" role="log"></div>
+    <div class="input-line">
+      <span id="prompt" class="prompt">&gt;</span>
+      <input id="cmd" class="cmd" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal input" />
+    </div>
+    <div class="scanlines"></div>
+    <div class="vignette"></div>
+  </div>
+  <div class="hud">
+    <button id="sound" class="hud-btn" title="Toggle sound">SOUND: ON</button>
+    <span class="hud-txt">NODE 1 · 2400 BAUD · <span id="clock"></span></span>
+  </div>
+  <script src="ghost.js"></script>
+  <script src="crypt.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
