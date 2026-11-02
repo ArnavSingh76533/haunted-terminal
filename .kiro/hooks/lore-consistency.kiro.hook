@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "name": "Lore consistency check",
+  "description": "When story text changes, check dates and names stay consistent with the product steering.",
+  "version": "1",
+  "when": { "type": "fileEdited", "patterns": ["ghost.js", "crypt.js", "app.js"] },
+  "then": { "type": "askAgent", "prompt": "Check that all lore is consistent: board name NIGHTSHADE BBS, est. 1987, MORTIS died 10-31-1989 at 23:59, 4 backup fragments, 7 lore fragments. Report and fix contradictions." }
+}

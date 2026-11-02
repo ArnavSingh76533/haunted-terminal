@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "name": "Run engine tests on save",
+  "description": "When ghost.js or crypt.js is saved, run the Node unit tests and fix any failure.",
+  "version": "1",
+  "when": { "type": "fileEdited", "patterns": ["ghost.js", "crypt.js"] },
+  "then": { "type": "askAgent", "prompt": "Run `node tests/engines.test.js`. If any test fails, explain why and fix the engine without changing the test's intent." }
+}
